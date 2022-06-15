@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+</head>
+<style>
+        *{
+            margin: 0;
+            border: 0;
+            padding: 0;
+        }
+        body{
+            background: url('img/glitch-effect-on-a-black-background.jpg');
+            color: #fff;
+        }
+        
+        .img-logo img{
+            background: #fff;
+            width: 100px;
+            height: 100px;
+            left: 0;
+            right: 0;
+            margin:auto;
+            top: -5%;
+            border-radius: 50%;
+            display: flex;
+            align-items:left;
+            justify-content: left;
+        }
+        nav{
+            margin-left: auto;
+            margin-right: auto;
+        }
+        header{
+            background-color: #808080;
+            color:#fff;
+            padding: 20px;
+            font-family: Arial;
+            width: 15%;
+            box-shadow: 2px 2px 2px 2px #000;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        h2{
+            font-size: 20px;
+            font-family: Arial;
+            margin: 0;
+            padding: 5px;
+            font-family: Arial;
+            color: #000;
+        }
+        h3{
+            font-size: 10px;
+            font-family: Arial;
+            margin: 0;
+            padding-left: 5px;
+            padding-bottom: 5px;
+            font-family: Arial;
+            color: #000;
+        }
+        .botao{
+            font-family: Arial;
+            font-size: 14px;
+            text-transform: uppercase;
+            font-weight: bold;
+            border:none;
+            padding: 15px;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+        }
+        .bt{
+            background-color: #DCDCDC;
+            color: #808080;
+        }
+        #grid-container {
+            background-color:#808080;
+            padding: 5px;
+            
+        }
+        .grid{
+            display: grid;
+            grid-template-columns: repeat(auto-fill,minmax(300px, 1fr));
+            grid-gap: 1px;
+            max-width: 1200px;
+            margin: 0 auto;
+           
+
+        }
+        .grid div{
+            font-family: arial;
+            text-align: center;
+            font-size: 1.4rem;
+            padding: 2px;
+
+            
+        } 
+        .container{
+            background-color: #DCDCDC;
+            width: 85%;
+            box-shadow:2px 2px #000;
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+
+        }
+        .imagem-grid{
+            width: 75%;
+            height: 75%;
+        }
+        .botao{
+            font-family: Arial;
+            font-size: 14px;
+            text-transform: uppercase;
+            font-weight: bold;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+
+
+        }
+        .bt{
+            background-color: #4F4F4F;
+            color: #000;
+            
+        }
+        .grid p{
+            font-family: Arial;
+            color: #000;
+        }
+        .grid h2{
+            font-family: Arial;
+            color: #000;
+        }
+        .navega{
+            margin-left: auto;
+            margin-right: auto;
+            width: 40%;
+            padding-left: 380px;
+        }
+</style>
+<body>
+    <div class="img-logo">
+        <img src="img/SGames.png">
+    </div>
+    <br>
+    <header class="container" id="grid-container">
+        <h2>Catalogo de Games</h2>
+        <h3>Escolha por Genero</h3>
+        
+            <a class="botao bt" href="#">Home</a>
+            <a class="botao bt" href="#">Perfil</a>
+            
+            <%
+                Usuario usuario= new  Usuario();
+                out.print(usuario.getEmailDeConexao());
+            %>
+            
+        
+    </header>
+    <br><br>
+    <section class="container" id="grid-container">
+        <form action="index.jsp" method="post">
+            <input type="text" name="pesquisar" placeholder="Entre com nome para pesquisar"/>
+            <input type="submit" value="PESQUISAR"/>
+        </form><br>
+        <%
+                out.print("<table border='1'>");
+                out.print("<tr>");
+                    out.print("<th>ID</th>");
+                    out.print("<th>NOME</th>");
+                    out.print("<th>EMAIL</th>");
+                    out.print("<th>SENHA</th>");
+                    out.print("<th>EDITAR</th>");
+                    out.print("<th>EXCLUIR</th>");
+                out.print("</tr>");
+                DAOUsuario daousu = new DAOUsuario();
+                if(request.getParameter("pesquisar") == "" || request.getParameter("pesquisar") == null){
+                    ArrayList<Usuario> lista = daousu.listarTodosUsuarios();
+                    for(int i = 0;i<lista.size();i++){
+                        out.print("<tr>");
+                            out.print("<td>"+lista.get(i).getId()+"</td>");
+                            out.print("<td>"+lista.get(i).getNome()+"</td>");
+                            out.print("<td>"+lista.get(i).getEmail()+"</td>");
+                             out.print("<td>"+lista.get(i).getSenha()+"</td>");
+                            out.print("<td><a href='alterar_usuario.jsp?id="
+                                    +lista.get(i).getId()
+                                    +"&nome="+lista.get(i).getNome()
+                                    +"&email="+lista.get(i).getEmail()
+                                    +"&senha="+lista.get(i).getSenha()
+                                    +"'>CLIQUE</a></td>");
+                            out.print("<td><a href='excluir_usuario.jsp?id="
+                                    +lista.get(i).getId()
+                                    +"&nome="+lista.get(i).getNome()
+                                    +"'>CLIQUE</a></td>");
+                        out.print("</tr>");
+                    }
+                }else{
+                    ArrayList<Usuario> lista = daousu.listarPorNomeUsuarios(request.getParameter("pesquisar"));
+                    for(int i = 0;i<lista.size();i++){
+                        out.print("<tr>");
+                            out.print("<td>"+lista.get(i).getId()+"</td>");
+                            out.print("<td>"+lista.get(i).getNome()+"</td>");
+                            out.print("<td>"+lista.get(i).getEmail()+"</td>");
+                             out.print("<td>"+lista.get(i).getSenha()+"</td>");
+                            out.print("<td><a href='alterar_usuario.jsp?id="
+                                    +lista.get(i).getId()
+                                    +"&nome="+lista.get(i).getNome()
+                                    +"&email="+lista.get(i).getEmail()
+                                    +"&senha="+lista.get(i).getSenha()
+                                    +"'>CLIQUE</a></td>");
+                            out.print("<td><a href='excluir_usuario.jsp?id="
+                                    +lista.get(i).getId()
+                                    +"&nome="+lista.get(i).getNome()
+                                    +"'>CLIQUE</a></td>");
+                        out.print("</tr>");
+                    }
+                }
+                out.print("</table>");
+            %>
+    </section>
+</body>
+</html>
