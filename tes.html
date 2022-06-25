@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina de Perguntas</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        background-color: blueviolet;
+        margin:0;
+	    padding:0;
+    }
+    .wrapper {
+        padding: 30px;
+    }
+    form-group {
+        
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 15px;
+        
+    }
+
+    .form-group label input {
+        display: inline-block;
+        margin-left: 0.5em;
+        margin-right: 2em;
+        line-height: 1em;
+    }
+    .form-group input{
+        float: left;
+        margin-right: 0.4em;
+    }
+
+    
+
+    .checkbox {
+        border-radius: 0;
+    }
+
+    .checkbox:before {
+        content: '';
+        width: 15px;
+        height: 15px;
+        background: blueviolet;
+        border-radius: 50%;
+        opacity: 0;
+        transition: all 600ms ease-in-out;
+        position: absolute;
+    }
+
+    .checkbox:before {
+        border-radius: 0;
+        background: transparent;
+        border: 4px solid blueviolet;
+        border-left: 0;
+        border-top: 0;
+        width: 7px;
+        height: 12px;
+        transform: rotate(45deg);
+        top: 2px;
+    }
+
+    .checkbox:checked:before {
+        opacity: 1;
+    }
+
+    .checkbox:focus {
+        box-shadow: 0 0 5px blueviolet;
+    }
+    .container{
+            background-color: #4B0082;
+            width: 65%;
+            box-shadow:2px 2px #000;
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+            
+        }
+    .container1{
+        background-color: #4B0082;
+        width: 65%;
+        box-shadow:2px 2px #000;
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+        
+
+    }
+    .botao{
+        font-family: Arial;
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: bold;
+        border: none;
+        padding: 15px;
+        cursor: pointer;
+        display: inline-block;
+        text-decoration: none;
+        text-align: center;
+        
+        }
+        .bt{
+            background-color: #4B0082;
+            color: #000;
+            align-items: center;
+        }
+        .bot{
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .resp{
+            display: flex;
+            font-family: arial;
+            font-size: 20px;
+            width: 30%;
+            
+        }
+        p{
+            font-family: arial;
+            font-size: 25px;
+            text-align: center;
+        }
+        .resposta {
+            display: flex;
+            aling-items: center;
+            justify-content: space-between;
+        }
+        
+</style>
+<body>
+    <br>
+    <section class="container">
+        <br>
+        <br>
+        <br>
+        <br>
+        <p>1-Como se sente em seu trabalho ?</p>
+        <br>
+        <br>
+        <br>
+        <br>
+    </section>
+    <br>
+    <section class="container1">
+        <div class="wrapper">
+            <div class="form-group">
+            <input class="checkbox" id="checkbox1" type='radio' name="checkbox2">
+            <label for="checkbox1">Feliz</label>
+            </div>
+            <div class="form-group">
+                <input class="checkbox" id="checkbox2" type='radio' name="checkbox2">
+                <label for="checkbox2">Meio a meio</label>
+            </div>
+            <div class="form-group">
+                <input class="checkbox" id="checkbox3" type='radio' name="checkbox2">
+                <label for="checkbox2">Descontente</label>
+            </div>
+            <div class="form-group">
+                <input class="checkbox" id="checkbox4" type='radio' name="checkbox2">
+                <label for="checkbox2">Muito infeliz</label>
+            </div>
+        </div>
+    </section>
+    <br>
+    <section class="container">
+        <br>
+        <br>
+        <br>
+        <br>
+        <p>2- Você se sente feliz ?</p>
+        <br>
+        <br>
+        <br>
+        <br>
+    </section>
+    <br>
+    <section class="container1">
+        <div class="wrapper">
+            <div class="form-group">
+            <input class="checkbox" id="checkbox1" type='radio' name='checkbox1'>
+            <label for="checkbox1">Feliz</label>
+            </div>
+            <div class="form-group">
+                <input class="checkbox" id="checkbox2" type='radio'name='checkbox1' >
+                <label for="checkbox2">muito feliz</label>
+            </div>
+            <div class="form-group">
+                <input class="checkbox" id="checkbox3" type='radio' name='checkbox1' >
+                <label for="checkbox2">mais ou menos</label>
+            </div>
+            <div class="form-group">
+                <input class="checkbox" id="checkbox4" type='radio' name='checkbox1'>
+                <label for="checkbox2">Muito infeliz</label>
+            </div>
+        </div>
+    </section>
+    <br>
+    <div class="bot">
+        <a href="" class="botao bt">Enviar</a>
+    </div>
+</body>
+</html>
